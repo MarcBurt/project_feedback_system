@@ -1,5 +1,4 @@
 
-
 FactoryGirl.define do
   sequence :email do |n|
     "email#{n}@example.com"
@@ -23,5 +22,14 @@ FactoryGirl.define do
   factory :project do
     name
   end  
+
+  sequence :title do |n|
+    "title#{n}"
+  end
+
+  factory :update do
+    title 
+    content "Here is some content for a project update"
+  end
 end
 
