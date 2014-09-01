@@ -9,8 +9,7 @@ describe "belongs to a project and user" do
   before(:each) do
     @user1 = create(:user, first_name: "Test")
     @project1 = create(:project, name: "Test Project")
-    # @project_update = create(:update)
-    @project_update = ProjectUpdate.new( title: "Title1", content: "Update Content!")
+    @project_update = create(:project_update, title: "Title1")
   end
 
   it "should belong to a user" do

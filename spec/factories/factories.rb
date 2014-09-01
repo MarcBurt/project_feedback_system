@@ -27,9 +27,10 @@ FactoryGirl.define do
     "title#{n}"
   end
 
-  factory :update do
+  factory :project_update do
     title 
     content "Here is some content for a project update"
   end
+
 end
 
