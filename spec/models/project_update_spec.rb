@@ -1,9 +1,5 @@
 require 'rails_helper'
 
-RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
-end
-
 describe "belongs to a project and user" do
 
   before(:each) do

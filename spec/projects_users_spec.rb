@@ -1,9 +1,5 @@
 require 'rails_helper'
 
-RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
-end
-
 describe "projects and users relationships" do
   before(:each) do
     @user1 = create(:user)

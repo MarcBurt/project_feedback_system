@@ -4,7 +4,7 @@ FactoryGirl.define do
     "email#{n}@example.com"
   end
   sequence :phone do |n|
-    "0011111111111#{n}"
+    "00111111111#{n}"
   end
 
   factory :user do
