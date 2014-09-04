@@ -1,28 +1,5 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an attempt at a sandbox sandbox solution for a feature requested by www.giveaiddirect.com, to allow recipients or staff to provide projet updates via multiple sources. The update information should be stored and sent to the project donors without giving the personal information of the staff/recipients.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+I am also using this project to experiment with RSPEC and Factory Girl.
