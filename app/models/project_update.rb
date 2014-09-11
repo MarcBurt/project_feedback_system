@@ -1,13 +1,13 @@
 class ProjectUpdate < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
+  validates :project_id, :user_id, :title, :content, presence:true
+
+  # after_create :send_update
 
   def initialise(data = {})
-    project_id = data{:project_id}
-    user_id = data{:user_id}
-    title = data{:title}
-    content = data{:content}
-
+    @project_id = data{:project_id}
+    @user_id = data{:user_id}
   end
 
   def self.receive_data(input = {}) # receives a hash from SMS/survey tool/app?
@@ -29,5 +29,10 @@ class ProjectUpdate < ActiveRecord::Base
       #raise user not part of project error?
     end
   end
+
+  # def send_update
+  #   recipients =
+
+  # end
 
 end

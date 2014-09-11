@@ -5,7 +5,7 @@ describe "belongs to a project and user" do
   before(:each) do
     @user1 = create(:user, first_name: "Test")
     @project1 = create(:project, name: "Test Project")
-    @project_update = create(:project_update, title: "Title1")
+    @project_update = create(:project_update, title: "Title1", user_id: @user1.id, project_id: @project1.id)
   end
 
   it "should belong to a user" do
@@ -34,11 +34,17 @@ describe "receive_data" do
 
     it "should find the user and project based on input" do
       hash = { phone: 111, name: "Test Project", title: "Project Update 1", content: "content for update 1" }
-      #controller.receive_data(hash)
       ProjectUpdate.receive_data(hash)
       update = ProjectUpdate.where(title: "Project Update 1").first
       expect(update.user.first_name).to eq "Test Creator"
       expect(update.project.name).to eq "Test Project"
+    end
+
+    it "should not create if a field is missing" do
+      hash = { phone: 111, name: "Test Project", title: "Project Update 1"}
+      ProjectUpdate.receive_data(hash)
+      update = ProjectUpdate.where(title: "Project Update 1").first
+      expect(ProjectUpdate.count).to eq 0
     end
   end
 
