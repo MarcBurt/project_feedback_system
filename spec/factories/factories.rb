@@ -27,9 +27,15 @@ FactoryGirl.define do
     "title#{n}"
   end
 
+  sequence(:id, aliases: [:project_id, :user_id]) do |n|
+    "#{n}"
+  end
+
   factory :project_update do
     title 
     content "Here is some content for a project update"
+    user_id 
+    project_id
   end
 
 end

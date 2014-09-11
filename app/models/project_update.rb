@@ -3,7 +3,7 @@ class ProjectUpdate < ActiveRecord::Base
   belongs_to :user
   validates :project_id, :user_id, :title, :content, presence:true
 
-  # after_create :send_update
+  after_create :send_update
 
   def initialise(data = {})
     @project_id = data{:project_id}
@@ -30,9 +30,12 @@ class ProjectUpdate < ActiveRecord::Base
     end
   end
 
-  # def send_update
-  #   recipients =
+  def send_update
+    recipients = Project.where(project_id: @project_id).users.all
+    recipients.each do
+      #send the update via chosen method - email?
+    end
 
-  # end
+  end
 
 end
