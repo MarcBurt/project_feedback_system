@@ -19,6 +19,36 @@ describe "belongs to a project and user" do
     expect(@project_update.project.name).to eq "Test Project"
     expect(@project1.project_updates.count).to eq 1
   end
+end
 
+describe "receive_data" do
+  before :each do
+    @user = create(:user, first_name: "Test Creator", phone: 111)
+    @project = create(:project, name: "Test Project")    
+  end
+
+  describe "when user is part of the project" do
+    before :each do
+      @project.users << @user
+    end
+
+    it "should find the user and project based on input" do
+      hash = { phone: 111, name: "Test Project", title: "Project Update 1", content: "content for update 1" }
+      #controller.receive_data(hash)
+      ProjectUpdate.receive_data(hash)
+      update = ProjectUpdate.where(title: "Project Update 1").first
+      expect(update.user.first_name).to eq "Test Creator"
+      expect(update.project.name).to eq "Test Project"
+    end
+  end
+
+  describe "when the user is not part of the project" do
+
+    it "should not create the ProjectUpdate" do
+      hash = { phone: 111, name: "Test Project", title: "Project Update 2", content: "this shouldn't exist" }
+      ProjectUpdate.receive_data(hash)
+      expect(ProjectUpdate.count).to eq 0
+    end
+  end
 end
 
